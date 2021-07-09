@@ -6,8 +6,8 @@ const {
 } = process.env;
 
 const whitelist = [
-  'https://mesto.abanina.nomoredomains.monster',
-  'http://mesto.abanina.nomoredomains.monster',
+  'https://movies.abanina.nomoredomains.monster',
+  'http://movies.abanina.nomoredomains.monster',
   'http://localhost:3000',
 ];
 
