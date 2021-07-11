@@ -43,18 +43,18 @@ module.exports.createMovie = (req, res, next) => {
 };
 
 module.exports.deleteMovie = (req, res, next) => {
-  Movie.findById(req.params.movieId)
+  Movie.findById(req.params.id)
     .then((movie) => {
       if (!movie) {
-        throw new NotFoundError('Фильм с указанным _id не найден');
+        throw new NotFoundError('Фильм с указанным id не найден');
       } else if (String(movie.owner._id) !== req.user._id) {
         throw new WrongUserError('Можно удалять только собственные фильмы');
       }
 
-      Movie.findByIdAndRemove(req.params.movieId)
+      Movie.findByIdAndRemove(req.params.id)
         .then((removedMovie) => {
           if (!removedMovie) {
-            throw new NotFoundError('Фильм с указанным _id не найден');
+            throw new NotFoundError('Фильм с указанным id не найден');
           }
           res.send({ message: 'Фильм удалён' });
         });
